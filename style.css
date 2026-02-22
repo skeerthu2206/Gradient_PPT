@@ -1,0 +1,165 @@
+/* BODY → DARK STAR BACKGROUND ONLY */
+body{
+  margin:0;
+  font-family:Segoe UI, sans-serif;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  overflow:hidden;
+
+  /* DARK SPACE BACKGROUND */
+  background:
+    radial-gradient(ellipse at bottom, #0b1a3a 0%, #050d1f 60%, #000814 100%);
+}
+
+/* STARS EFFECT */
+body::before{
+  content:"";
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+
+  background-image:
+    radial-gradient(2px 2px at 20% 30%, white, transparent),
+    radial-gradient(1.5px 1.5px at 40% 70%, white, transparent),
+    radial-gradient(2px 2px at 60% 20%, white, transparent),
+    radial-gradient(1.5px 1.5px at 80% 60%, white, transparent),
+    radial-gradient(2px 2px at 10% 80%, white, transparent),
+    radial-gradient(1px 1px at 90% 10%, white, transparent),
+    radial-gradient(2px 2px at 70% 40%, white, transparent),
+    radial-gradient(1px 1px at 30% 90%, white, transparent);
+
+  background-repeat:repeat;
+  background-size:300px 300px;
+
+  animation: twinkle 6s infinite alternate;
+
+  pointer-events:none;
+}
+
+/* PPT CONTAINER */
+.ppt-container{
+  width:1100px;
+  height:620px;
+  position:relative;
+  overflow:hidden;
+  z-index:1;
+}
+
+/* SLIDE */
+.slide{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  opacity:0;
+  transform:translateX(100%);
+  transition:0.7s ease;
+}
+
+.slide.active{
+  opacity:1;
+  transform:translateX(0);
+}
+
+/* CARD → LIGHT DREAMY GRADIENT PPT */
+.card{
+  width:100%;
+  height:100%;
+
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  align-items:center;
+
+  padding:50px;
+  border-radius:25px;
+
+  /* LIGHT DREAMY GRADIENT */
+  background:
+    radial-gradient(circle at 20% 30%, #ff9ecf, transparent 40%),
+    radial-gradient(circle at 80% 20%, #9ea7ff, transparent 40%),
+    radial-gradient(circle at 50% 80%, #d89cff, transparent 40%),
+    linear-gradient(135deg, #ffb6d9, #caa0ff);
+
+  background-size:200% 200%;
+  animation:gradientMove 12s ease infinite;
+
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+
+  box-sizing:border-box;
+}
+
+/* TEXT */
+.text{
+  width:60%;
+  color:white;
+}
+
+.text h1{
+  font-size:42px;
+  margin-bottom:20px;
+}
+
+.text ul{
+  font-size:19px;
+  line-height:1.8;
+}
+
+/* IMAGE */
+.image{
+  width:35%;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.image img{
+  width:100%;
+  max-width:400px;
+  border-radius:20px;
+  box-shadow:0 15px 40px rgba(0,0,0,0.4);
+}
+
+/* BUTTONS */
+button{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  padding:15px 20px;
+  border:none;
+  background:white;
+  cursor:pointer;
+  font-size:22px;
+  border-radius:12px;
+  z-index:1000;
+}
+
+.prev{
+  left:-70px;
+}
+
+.next{
+  right:-70px;
+}
+
+button:hover{
+  background:#e5e7eb;
+}
+
+/* ANIMATIONS */
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+@keyframes twinkle{
+  from{opacity:0.6;}
+  to{opacity:1;}
+}
